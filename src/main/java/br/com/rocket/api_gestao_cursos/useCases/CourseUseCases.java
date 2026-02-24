@@ -22,7 +22,7 @@ public class CourseUseCases {
     public CoursesEntity createCourse(CourseRequestDTO courseRequestDTO){
         var courseEntity = CoursesEntity.builder()
                 .name(courseRequestDTO.getName())
-                .active(courseRequestDTO.getActive())
+                .active(Boolean.TRUE)
                 .category(courseRequestDTO.getCategory())
                 .build();
 
@@ -46,7 +46,6 @@ public class CourseUseCases {
                 .orElseThrow(() -> new UserNotFoundException("Course not found!"));
 
         course.setName(courseRequestDTO.getName());
-        course.setActive(courseRequestDTO.getActive());
         course.setCategory(courseRequestDTO.getCategory());
 
         this.coursesRepository.save(course);
